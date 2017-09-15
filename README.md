@@ -1,4 +1,4 @@
-#solarized-vim-ide-terminator
+# solarized-vim-ide-terminator
 
 ```bash
 cp -r terminator ~/.config/
