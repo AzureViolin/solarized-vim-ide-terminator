@@ -1,12 +1,16 @@
-solarized-vim-ide-terminator
+#solarized-vim-ide-terminator
 
-```
-mkdir -p ~/.config/terminator
-cp config ~/.config/terminator/
+```bash
+cp -r terminator ~/.config/
 cp .vimrc ~/
-mkdir -p ~/.vim/bundle
+mkdir ~/.vim
 cp -r bundle ~/.vim/
-mkdir -p ~/.local/share/fonts
-cp mplus-1mn-medium.ttf ~/.local/share/fonts/
+cp -r fonts ~/.local/share
+sudo cp -r conf.avail /usr/share/fontconfig/
+
+cd /etc/fonts/conf.d
+sudo ls -sf ../conf.aval/10-powerline-symbols.conf 10-powerline-symbols.conf
+
+fc-cache -fv
 ```
 
