@@ -1,8 +1,22 @@
 " --- Gotta be first ---
 set nocompatible
 
-" --- 4 space tab ---
-set tabstop=4
+" --- set clipboard to XA_PRIMARY
+set clipboard=unnamed
+
+" --- 2 space tab ---
+" The width of a hard tabstop measured in "spaces" -- effectively the (maximum) width of an actual tab character.
+set tabstop=8
+" The size of an 'indent'. It's also measured in spaces, so if your code base indents with tab characters then you want shiftwidth to equal the number of tab characters times tabstop. This is also used by things like the =, > and < commands.
+set shiftwidth=2
+" Setting this to a non-zero value other than tabstop will make the tab key (in insert mode) insert a combination of spaces (and possibly tabs) to simulate tab stops at this width.
+set softtabstop=0
+" Enabling this will make the tab key (in insert mode) insert spaces or tabs to go to the next indent of the next tabstop when the cursor is at the beginning of a line (i.e. the only preceding characters are whitespace).
+set smarttab
+" Enabling this will make the tab key (in insert mode) insert spaces instead of tab characters. This also affects the behavior of the retab command.
+set expandtab
+" To turn off expandtab for editing makefiles
+autocmd FileType make setlocal noexpandtab
 
 " --- vundle plugin manager ---
 filetype off
@@ -39,6 +53,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jez/vim-c0'
 Plugin 'jez/vim-ispc'
 Plugin 'kchmck/vim-coffee-script'
+" --- auto completion ---
+Plugin  'Valloric/YouCompleteMe'
 
 " Highlight and trip trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
@@ -76,6 +92,16 @@ au BufNewFile,BufRead *.ino set filetype=cpp
 set mouse=a
 
 " --- Plugin-Specific Settings ---
+" --- YouCompleteMe ---
+"let mapleader = "\<Space>"
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
 " --- altercation/vim-color-solarized settings ---
 "  Toggle this to "light" for light colorscheme
 set background=dark
@@ -103,6 +129,7 @@ let g:airline#extensions#tabline#enabled = 1
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
 "let g:nerdtree_tabs_open_on_console_startup = 1
+nmap <F2> :NERDTreeTabsToggle<CR>
 
 " --- scrooloose/syntastic settings ---
 let g:syntastic_error_symbol = '✘'
@@ -129,6 +156,10 @@ let g:easytags_suppress_ctags_warning = 1
 nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
+"let g:tagbar_width=35
+"let g:tagbar_autofocus=1
+"let g:tagbar_left = 1
+nmap <F3> :TagbarToggle<CR>
 
 " --- airblade/vim-gitgutter settings ---
 "  Reqruied after having changed the colorscheme
