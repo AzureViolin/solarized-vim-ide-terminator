@@ -6,7 +6,7 @@ set clipboard=unnamed
 
 " --- 2 space tab ---
 " The width of a hard tabstop measured in "spaces" -- effectively the (maximum) width of an actual tab character.
-set tabstop=8
+set tabstop=4
 " The size of an 'indent'. It's also measured in spaces, so if your code base indents with tab characters then you want shiftwidth to equal the number of tab characters times tabstop. This is also used by things like the =, > and < commands.
 set shiftwidth=2
 " Setting this to a non-zero value other than tabstop will make the tab key (in insert mode) insert a combination of spaces (and possibly tabs) to simulate tab stops at this width.
