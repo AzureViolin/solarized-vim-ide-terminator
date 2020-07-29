@@ -2,10 +2,13 @@
 
 ## Usage
 ```bash
+
 cp -r terminator ~/.config/
 cp .vimrc ~/
 mkdir ~/.vim
 cp -r bundle ~/.vim/
+cd ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git 
 cp -r fonts ~/.local/share
 sudo cp -r conf.avail /etc/fonts/
 
@@ -14,6 +17,13 @@ sudo ln -sf ../conf.avail/10-powerline-symbols.conf 10-powerline-symbols.conf
 
 fc-cache -fv
 ```
+
+Quit and restart vim, then
+
+```
+:PluginInstall
+```
+will update all plugins in ~/.vim
 
 ## New fonts
 1. put new fonts in ./fonts
